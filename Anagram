@@ -1,0 +1,30 @@
+/**
+* Time complexity : n(logm+logm) n is length of string. m is length of operation string whose anagram to be found.
+* Space complexity : O(m)
+*/
+
+
+class Solution {
+    
+    public List<Integer> findAnagrams(String s, String p) {
+         List<Integer> result=new ArrayList();
+        if(s==null || s.length() == 0) return result;
+        char tempo[]=p.toCharArray();
+        Arrays.sort(tempo);
+
+        for(int i=0;i<=s.length()-p.length();i++){
+            int count=0;
+            String subs=s.substring(i,i+p.length());
+            char temp[]=subs.toCharArray();
+            Arrays.sort(temp);
+            if(Arrays.equals(temp,tempo)) count++;
+
+            if(count==1){
+                result.add(i);
+            }
+
+        }
+
+        return result;
+    }
+}
