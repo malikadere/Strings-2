@@ -1,0 +1,30 @@
+/**
+* Time complexity : O(m*n)
+* Space : no
+*/
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        
+        if(needle.length()==0) return 0;
+        if(haystack.length()==0) return 0;
+        
+        int i=0;
+        
+        while(i<haystack.length()){
+            if(needle.charAt(0)==haystack.charAt(i)){
+                int temp=i;
+                int j=0;
+                while(needle.charAt(j)==haystack.charAt(temp)){
+                    j++;
+                    temp++;
+                    if(j==needle.length()){
+                        return i;
+                    }
+                }
+            }
+            i++;
+        }
+       return -1; 
+    }
+}
